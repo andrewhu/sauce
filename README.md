@@ -1,6 +1,9 @@
 ## sauce
 configs, dotfiles, and post-installation reminders
 
+[Server configs](server) \
+[Wallpapers](wallpapers)
+
 #### Vim config: `~/.vimrc`
 ```
 set tabstop=4
