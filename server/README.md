@@ -110,11 +110,12 @@ server {
   }
 
   # For backend deploying gunicorn
-  location / { 
+  location /api { 
     include proxy_params;
     proxy_pass http://unix:/var/www/path/to/api.sock;
     #proxy_pass http://localhost:5000;
   }
+}
 ```
 
 #### `sites/no-default`
