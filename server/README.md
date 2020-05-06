@@ -3,8 +3,8 @@ Usually running Nginx + Cloudflare + Gunicorn
 
 #### Reminders
 `/etc/ssh/sshd_config`:
-* Disable root login
-* ClientAliveInterval
+* PermitRootLogin no
+* ClientAliveInterval 120
 
 #### `/etc/systemd/system/site.service`
 Enable site with `systemctl enable site.service`
