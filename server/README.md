@@ -1,6 +1,11 @@
 ## Server configs
 Usually running Nginx + Cloudflare + Gunicorn
 
+#### Reminders
+`/etc/ssh/sshd_config`:
+* Disable root login
+* ClientAliveInterval
+
 #### `/etc/systemd/system/site.service`
 Enable site with `systemctl enable site.service`
 ```
