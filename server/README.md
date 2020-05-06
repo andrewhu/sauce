@@ -1,5 +1,23 @@
 ## Server configs
-Usually running Nginx + Cloudflare
+Usually running Nginx + Cloudflare + Gunicorn
+
+#### `/etc/systemd/system/site.service`
+Enable site with `systemctl enable site.service`
+```
+[Unit]
+Description=Gunicorn instance to serve site
+After=network.target
+
+[Service]
+User=andrew
+Group=www-data
+WorkingDirectory=/var/www/site
+Environment="PATH=/var/www/site/venv/bin"
+ExecStart=/var/www/site/venv/bin/gunicorn --workers 3 --bind unix:api.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
+```
 
 #### `nginx.conf`
 ```
@@ -146,7 +164,7 @@ add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" alway
 
 #### `includes/protect-system-files.conf`
 ```
- Prevent clients from accessing hidden files (starting with a dot)
+# Prevent clients from accessing hidden files (starting with a dot)
 # This is particularly important if you store .htpasswd files in the site hierarchy
 # Access to `/.well-known/` is allowed.
 # https://www.mnot.net/blog/2010/04/07/well-known
