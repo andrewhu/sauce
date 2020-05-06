@@ -13,6 +13,11 @@ set showtabline=4
 set number
 ```
 
+#### `~/.inputrc`
+```
+set completion-ignore-case On
+```
+
 #### Configure swap space 
 ```
 sudo fallocate -l 1G /swapfile
