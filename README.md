@@ -4,6 +4,27 @@ configs, dotfiles, and post-installation reminders
 [Server configs](server) \
 [Wallpapers](wallpapers)
 
+#### [Use iGPU for display](https://askubuntu.com/questions/1061551/)
+First check iGPU
+```
+$ lspci  | grep VGA
+00:02.0 VGA compatible controller: Intel Corporation Device 3e92
+01:00.0 VGA compatible controller: NVIDIA Corporation GP104 (rev a1)
+```
+Then `/etc/X11/xorg.conf`:
+```
+Section "Device"
+    Identifier      "intel"
+    Driver          "intel"
+    BusId           "PCI:0:2:0"
+EndSection
+
+Section "Screen"
+    Identifier      "intel"
+    Device          "intel"
+EndSection
+```
+
 #### Vim config: `~/.vimrc`
 ```
 set tabstop=4
