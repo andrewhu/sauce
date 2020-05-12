@@ -42,7 +42,7 @@ set number
 set completion-ignore-case On
 ```
 
-#### Configure swap space 
+#### Configure swap space
 ```
 sudo fallocate -l 1G /swapfile
 sudo chmod 600 /swapfile 
@@ -51,7 +51,7 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 `/etc/sysctl.conf`:
 ```
-vm.swappiness=10
+vm.swappiness=10 # Only use swap when absolutely necessary
 vm.vfs_cache_pressure=50
 ```
 
